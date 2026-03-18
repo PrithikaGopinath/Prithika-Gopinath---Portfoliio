@@ -292,10 +292,13 @@
     }
     .timeline-item {
       position: relative; padding-bottom: 3rem;
-      opacity: 0; transform: translateX(-20px);
+      opacity: 1; transform: translateX(0);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
-    .timeline-item.visible { opacity: 1; transform: translateX(0); }
+    .js-loaded .timeline-item {
+      opacity: 0; transform: translateX(-20px);
+    }
+    .timeline-item.visible { opacity: 1 !important; transform: translateX(0) !important; }
     .timeline-dot {
       position: absolute; left: -2.37rem; top: 0.3rem;
       width: 14px; height: 14px; border-radius: 50%;
@@ -424,10 +427,13 @@
     }
 
     .reveal {
-      opacity: 0; transform: translateY(30px);
+      opacity: 1; transform: translateY(0);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .js-loaded .reveal {
+      opacity: 0; transform: translateY(30px);
+    }
+    .reveal.visible { opacity: 1 !important; transform: translateY(0) !important; }
 
     /* ── RESPONSIVE ──────────────────────── */
     @media (max-width: 768px) {
@@ -608,22 +614,6 @@
     <div class="timeline">
 
       <div class="timeline-item">
-  <div class="timeline-dot"></div>
-  <div class="timeline-meta">
-    <span class="timeline-date">Feb 2026 – Present</span>
-    <span class="timeline-org">LSBU ZeroDay · London, On-site</span>
-  </div>
-  <div class="timeline-title">Assistant Technical Lead</div>
-  <ul class="timeline-bullets">
-    <li>Support the Technical Lead in coordinating cybersecurity projects, team activities, and strategic planning</li>
-    <li>Assist in planning and delivering technical sessions, workshops, and hands-on labs for club members</li>
-    <li>Guide team members through practical exercises, CTF challenges, and competitions</li>
-    <li>Develop and maintain technical documentation and project resources for the club</li>
-    <li>Collaborate with the leadership team to strengthen ZeroDay's technical capabilities and student engagement</li>
-  </ul>
-</div>
-      
-      <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-meta">
           <span class="timeline-date">Dec 2025 – Present</span>
@@ -657,7 +647,7 @@
           <span class="timeline-date">2022 – 2023</span>
           <span class="timeline-org">RMK Senior Secondary School, Chennai</span>
         </div>
-        <div class="timeline-title">School House Captain / Event Volunteer – Inter-school Competitions</div>
+        <div class="timeline-title">Event Volunteer – Inter-school Competitions</div>
         <ul class="timeline-bullets">
           <li>Coordinated registration, venue guidance, and scheduling for inter-school competitions</li>
           <li>Ensured a smooth, positive experience for visiting students and schools</li>
@@ -868,6 +858,9 @@
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Add js-loaded so reveal animation only runs when JS is active
+    document.body.classList.add('js-loaded');
+
     // Custom cursor
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
