@@ -33,7 +33,6 @@
     /* Custom cursor - desktop only, never blocks clicks */
     @media (pointer: fine) {
       body { cursor: none; }
-      a, button { cursor: none; }
     }
     .cursor {
       width: 10px; height: 10px;
@@ -339,6 +338,7 @@
       background: var(--card); border: 1px solid var(--border);
       border-radius: 20px; padding: 2rem; position: relative;
       overflow: hidden; transition: all 0.3s;
+      cursor: default;
     }
     .project-card::after {
       content: ''; position: absolute; inset: 0; border-radius: 20px;
@@ -360,8 +360,11 @@
       display: inline-flex; align-items: center; gap: 0.4rem;
       font-size: 0.8rem; color: var(--accent); text-decoration: none; font-weight: 500;
       transition: gap 0.2s;
+      cursor: pointer !important;
+      position: relative; z-index: 10;
     }
     .project-link:hover { gap: 0.7rem; }
+    a, button { cursor: pointer !important; }
 
     /* ── CERTIFICATIONS ──────────────────── */
     .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
